@@ -84,8 +84,8 @@ initSocket(io);
 
 const PORT = process.env.PORT || 5000;
 httpServer.listen(PORT, () => {
-  console.log(`\n🚀 Opdify Backend: http://localhost:${PORT}`);
-  console.log(`📡 Socket.IO ready | ENV: ${process.env.NODE_ENV}\n`);
+  console.log(`\n🚀 Opdify Backend`);
+  console.log(`📡 Socket.IO ready`);
 });
 
 export { io };
