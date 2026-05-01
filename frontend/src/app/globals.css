@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand: #0f766e;
+    --brand-dark: #0d6b63;
+    --brand-light: #ccfbf1;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  ::selection { background: #99f6e4; color: #042f2e; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+}
+
+@layer components {
+  /* Buttons */
+  .btn { @apply inline-flex items-center justify-center gap-2 font-bold rounded-2xl transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-teal-700 hover:bg-teal-800 text-white px-5 py-2.5 text-sm; }
+  .btn-secondary { @apply btn bg-white hover:bg-teal-50 text-teal-700 border border-teal-200 px-5 py-2.5 text-sm; }
+  .btn-ghost { @apply btn hover:bg-slate-100 text-slate-600 px-4 py-2 text-sm; }
+  .btn-danger { @apply btn bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-4 py-2 text-sm; }
+  .btn-sm { @apply px-3.5 py-1.5 text-xs !important; }
+  .btn-lg { @apply px-7 py-3.5 text-base !important; }
+
+  /* Keep brand- aliases for backward compat */
+  .bg-brand-50  { @apply bg-teal-50; }
+  .bg-brand-100 { @apply bg-teal-100; }
+  .bg-brand-200 { @apply bg-teal-200; }
+  .bg-brand-600 { @apply bg-teal-700; }
+  .bg-brand-700 { @apply bg-teal-800; }
+  .text-brand-600 { @apply text-teal-700; }
+  .text-brand-700 { @apply text-teal-800; }
+  .text-brand-200 { @apply text-teal-200; }
+  .border-brand-200 { @apply border-teal-200; }
+  .border-brand-300 { @apply border-teal-300; }
+  .hover\:bg-brand-50:hover { @apply bg-teal-50; }
+  .hover\:bg-brand-100:hover { @apply bg-teal-100; }
+  .hover\:bg-brand-700:hover { @apply bg-teal-800; }
+  .ring-brand-400 { @apply ring-teal-400; }
+  .focus\:ring-brand-400:focus { @apply ring-teal-400; }
+  .shadow-glow { box-shadow: 0 0 20px rgba(15,118,110,0.3); }
+  .shadow-card { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 4px 16px 0 rgb(0 0 0 / 0.06); }
+  .shadow-card-md { box-shadow: 0 2px 8px 0 rgb(0 0 0 / 0.06), 0 8px 32px 0 rgb(0 0 0 / 0.08); }
+
+  /* Inputs */
+  .input { @apply w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-slate-800 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all; }
+  .label { @apply block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1.5; }
+
+  /* Cards */
+  .card { @apply bg-white rounded-2xl border border-slate-100 shadow-card; }
+  .card-hover { @apply card hover:shadow-card-md hover:-translate-y-0.5 transition-all duration-200; }
+
+  /* Badges */
+  .badge { @apply inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full; }
+  .badge-green  { @apply badge bg-teal-50 text-teal-700; }
+  .badge-red    { @apply badge bg-red-50 text-red-700; }
+  .badge-amber  { @apply badge bg-amber-50 text-amber-700; }
+  .badge-blue   { @apply badge bg-blue-50 text-blue-700; }
+  .badge-gray   { @apply badge bg-slate-100 text-slate-600; }
+  .badge-violet { @apply badge bg-violet-50 text-violet-700; }
+
+  .section { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section-title { @apply text-2xl md:text-3xl font-black text-slate-900 tracking-tight; }
+  .spinner { @apply w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin; }
+  .spinner-brand { @apply w-5 h-5 border-2 border-teal-200 border-t-teal-600 rounded-full animate-spin; }
+  .live-dot { @apply w-2 h-2 rounded-full bg-teal-500 animate-pulse; }
+
+  .from-brand-100 { @apply from-teal-100; }
+  .from-brand-600 { @apply from-teal-600; }
+  .to-brand-200   { @apply to-teal-200; }
+  .to-brand-800   { @apply to-teal-900; }
+  .from-brand-700 { @apply from-teal-700; }
+  .from-brand-800 { @apply from-teal-800; }
+}
+
+@layer utilities {
+  .text-gradient { background: linear-gradient(135deg, #0f766e, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .animate-fade-up { animation: fadeUp 0.4s ease-out both; }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
