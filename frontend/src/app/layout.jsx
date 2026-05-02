@@ -17,6 +17,10 @@ const font = Plus_Jakarta_Sans({
 export const metadata = {
   metadataBase: new URL('https://opdify.com'), // replace with your actual domain
 
+  verification: {
+    google: "<meta name="google-site-verification" content="_g1rCvWUuT8cd9DxX2Wl9oWqRnzUR4jSSY8Hj2GsrHA" />", 
+  },
+  
   title: {
     default: 'Opdify | Online Doctor Appointment Booking & Clinic Queue Management in India',
     template: '%s | Opdify',
