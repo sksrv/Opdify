@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://opdify.vercel.app/
+
+# Sitemaps
+Sitemap: https://opdify.vercel.app/sitemap.xml

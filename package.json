@@ -9,5 +9,8 @@
     "seed": "cd backend && npm run seed",
     "build:frontend": "cd frontend && npm run build"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "next-sitemap": "^4.2.3"
+  }
 }
