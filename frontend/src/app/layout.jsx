@@ -18,7 +18,7 @@ export const metadata = {
   metadataBase: new URL('https://opdify.com'), // replace with your actual domain
 
   verification: {
-    google: "<meta name="google-site-verification" content="_g1rCvWUuT8cd9DxX2Wl9oWqRnzUR4jSSY8Hj2GsrHA" />", 
+    google: "_g1rCvWUuT8cd9DxX2Wl9oWqRnzUR4jSSY8Hj2GsrHA", 
   },
   
   title: {
