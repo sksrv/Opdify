@@ -19,8 +19,6 @@ import hospitalRoutes from './routes/hospitals.js';
 import uploadRoutes from './routes/upload.js';
 
 
-// Cloudinary will configure itself using env vars
-
 const app = express();
 const httpServer = createServer(app);
 

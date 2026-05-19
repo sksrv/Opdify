@@ -12,6 +12,7 @@ import { useSocket } from '../../../context/SocketContext.jsx';
 import api from '../../../lib/api.js';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
+import Image from 'next/image';
 
 /* ─── CONSTANTS ─── */
 const STATUS_STYLE = {
@@ -389,13 +390,21 @@ export default function DoctorDashboard() {
         {/* ════ HEADER ════ */}
         <header className="sticky top-0 z-30 bg-white border-b border-slate-100 shadow-sm">
           <div className="flex items-center h-14 px-3 sm:px-4 gap-2 sm:gap-3">
-            <Link href="/" className="flex items-center gap-2 shrink-0">
-              <div className="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center shadow-sm">
-                <span className="text-white text-[11px] font-black">CQ</span>
-              </div>
-              <span className="font-black text-slate-900 text-sm hidden sm:block">
-                Clin<span className="text-teal-600">IQ</span>
-              </span>
+            <Link
+              href="/"
+              aria-label="Opdify"
+              className="shrink-0"
+            >
+              <Image
+                src="/opdify-logo-cropped.svg"
+                alt="Opdify"
+                width={480}
+                height={172}
+                priority
+                unoptimized
+                draggable={false}
+                className="h-16 w-auto object-contain transition-opacity duration-150 hover:opacity-85"
+              />
             </Link>
 
             <div className="w-px h-5 bg-slate-200 shrink-0 hidden sm:block" />

@@ -50,12 +50,7 @@ export default function AuthModal({ onClose, onSuccess, redirectTo }) {
           <button onClick={onClose} className="absolute top-4 right-4 p-1.5 rounded-xl hover:bg-white/20 transition-colors">
             <X size={18} />
           </button>
-          <div className="flex items-center gap-2.5 mb-4">
-            <div className="w-8 h-8 bg-white/20 rounded-xl flex items-center justify-center">
-              <span className="font-black text-sm">CQ</span>
-            </div>
-            <span className="font-black text-lg">Opdify</span>
-          </div>
+          
           <h2 className="text-2xl font-black">{mode === 'login' ? 'Welcome back' : 'Create account'}</h2>
           <p className="text-teal-200 text-sm mt-1">
             {mode === 'login' ? 'Sign in to track your queue & appointments' : 'Join thousands using Opdify'}
