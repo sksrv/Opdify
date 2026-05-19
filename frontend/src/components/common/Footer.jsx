@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Heart } from 'lucide-react';
 
 export default function Footer() {
@@ -7,12 +8,32 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-2">
-            <div className="flex items-center gap-2.5 mb-3">
+             <div className="flex items-center gap-2.5 mb-3">
               <div className="w-8 h-8 bg-teal-700 rounded-xl flex items-center justify-center">
-                <span className="text-white font-black text-xs">CQ</span>
+                
+                {/* Logo */}
+                <Link
+              href="/"
+              aria-label="Opdify"
+              className="shrink-0"
+            >
+              <Image
+                src="/favicon1.svg"
+                alt="Opdify"
+                width={480}
+                height={172}
+                priority
+                unoptimized
+                draggable={false}
+                className="h-10 w-auto object-contain transition-opacity duration-150 hover:opacity-85"
+              />
+            </Link>
+                
               </div>
-              <span className="font-black text-lg text-white">Clin<span className="text-teal-400">IQ</span></span>
-            </div>
+              <span className="font-black text-lg text-white ml-1">Opd<span className="text-teal-400">ify</span></span>
+            </div> 
+            
+
             <p className="text-sm leading-relaxed max-w-xs text-slate-500">
               Smart clinic appointment & live queue management. Reduce waiting time, improve patient experience.
             </p>

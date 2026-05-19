@@ -311,14 +311,14 @@ export const addWalkInPatient = async (req, res, next) => {
   try {
     const { patientName, patientPhone, notes } = req.body;
 
-    // ✅ SAME AS PRIORITY (DO NOT CHANGE THIS PATTERN)
+    
     const doctor = await Doctor.findOne({ userId: req.user._id });
     const today = getTodayDate();
 
     let queue = await Queue.findOne({ doctorId: doctor._id, date: today });
     if (!queue) queue = new Queue({ doctorId: doctor._id, date: today });
 
-    // ✅ SAME TOKEN LOGIC (IMPORTANT)
+    
     const tokenNumber = queue.lastTokenIssued + 1;
     queue.lastTokenIssued = tokenNumber;
 
@@ -335,7 +335,7 @@ export const addWalkInPatient = async (req, res, next) => {
       isPriority: false,   
     });
 
-    // ✅ keep real-time working
+    //  keep real-time working
     broadcast(req.io, doctor._id.toString(), 'queue_updated', { apt });
 
     res.json({ success: true, data: apt });
@@ -390,7 +390,7 @@ export const getQueuePublic = async (req, res, next) => {
       date: today,
     });
 
-    // 🔥 CALCULATE REAL DATA
+    //  CALCULATE REAL DATA
     const total = appointments.length;
 
     const waiting = appointments.filter(a =>

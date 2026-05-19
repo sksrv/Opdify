@@ -55,18 +55,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[68px]">
 
-            {/* ── Logo ──
-                Uses the cropped SVG (opdify-logo-cropped.svg) which has:
-                - Background removed (transparent)
-                - viewBox trimmed tightly to the actual logo content
-                This means h-11 gives a comfortably large, sharp logo with
-                zero wasted whitespace above/below.
-
-                If you want to keep using the ORIGINAL file, replace the src
-                with "/opdify-logo1.svg" and set className to
-                "h-11 w-auto object-contain" — it will still work but the
-                logo will appear smaller because of the large empty canvas.
-            --> */}
+            
             <Link
               href="/"
               aria-label="Opdify"
