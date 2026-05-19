@@ -15,20 +15,20 @@ import Link from 'next/link';
 
 /* ─── CONSTANTS ─── */
 const STATUS_STYLE = {
-  waiting:     { chip: 'bg-slate-100 text-slate-600',  label: 'Waiting'     },
-  be_ready:    { chip: 'bg-amber-100 text-amber-800',  label: 'Be Ready'    },
-  in_progress: { chip: 'bg-teal-100 text-teal-800',    label: 'In Progress' },
-  completed:   { chip: 'bg-green-100 text-green-700',  label: 'Completed'   },
-  skipped:     { chip: 'bg-orange-100 text-orange-700',label: 'Skipped'     },
-  missed:      { chip: 'bg-red-50 text-red-500',       label: 'Missed'      },
-  cancelled:   { chip: 'bg-slate-50 text-slate-400',   label: 'Cancelled'   },
+  waiting: { chip: 'bg-slate-100 text-slate-600', label: 'Waiting' },
+  be_ready: { chip: 'bg-amber-100 text-amber-800', label: 'Be Ready' },
+  in_progress: { chip: 'bg-teal-100 text-teal-800', label: 'In Progress' },
+  completed: { chip: 'bg-green-100 text-green-700', label: 'Completed' },
+  skipped: { chip: 'bg-orange-100 text-orange-700', label: 'Skipped' },
+  missed: { chip: 'bg-red-50 text-red-500', label: 'Missed' },
+  cancelled: { chip: 'bg-slate-50 text-slate-400', label: 'Cancelled' },
 };
 
 const Q_BADGE = {
-  active:      'bg-teal-100 text-teal-800',
-  paused:      'bg-amber-100 text-amber-800',
+  active: 'bg-teal-100 text-teal-800',
+  paused: 'bg-amber-100 text-amber-800',
   not_started: 'bg-slate-100 text-slate-600',
-  ended:       'bg-red-100 text-red-700',
+  ended: 'bg-red-100 text-red-700',
 };
 
 /* ─── TINY COMPONENTS ─── */
@@ -45,14 +45,14 @@ function Btn({ onClick, children, variant = 'ghost', size = 'md', disabled = fal
   const base = 'inline-flex items-center justify-center gap-2 font-semibold rounded-2xl transition-all duration-150 active:scale-[.97] disabled:opacity-40 disabled:cursor-not-allowed select-none border leading-none';
   const sz = { sm: 'h-9 px-3 text-xs', md: 'h-11 px-4 text-sm', lg: 'h-12 px-5 text-sm', xl: 'h-14 px-6 text-base' };
   const v = {
-    primary:   'bg-teal-700 text-white border-teal-700 hover:bg-teal-800',
+    primary: 'bg-teal-700 text-white border-teal-700 hover:bg-teal-800',
     secondary: 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50',
-    success:   'bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-700',
-    warning:   'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100',
-    danger:    'bg-red-50 text-red-700 border-red-200 hover:bg-red-100',
-    orange:    'bg-orange-500 text-white border-orange-500 hover:bg-orange-600',
-    ghost:     'bg-transparent text-slate-600 border-transparent hover:bg-slate-100',
-    violet:    'bg-violet-50 text-violet-800 border-violet-200 hover:bg-violet-100',
+    success: 'bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-700',
+    warning: 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100',
+    danger: 'bg-red-50 text-red-700 border-red-200 hover:bg-red-100',
+    orange: 'bg-orange-500 text-white border-orange-500 hover:bg-orange-600',
+    ghost: 'bg-transparent text-slate-600 border-transparent hover:bg-slate-100',
+    violet: 'bg-violet-50 text-violet-800 border-violet-200 hover:bg-violet-100',
   };
   return (
     <button type={type} onClick={onClick} disabled={disabled} className={`${base} ${sz[size]} ${v[variant]} ${className}`}>
@@ -184,17 +184,17 @@ function MoreSheet({ open, onClose, items }) {
 
 /* ─── QUEUE ROW ─── */
 function QueueRow({ apt, queueActive, onComplete, onSkip, onRecall }) {
-  const isIP  = apt.status === 'in_progress';
-  const isBR  = apt.status === 'be_ready';
-  const isSk  = apt.status === 'skipped';
-  const dim   = ['completed','missed','cancelled'].includes(apt.status);
+  const isIP = apt.status === 'in_progress';
+  const isBR = apt.status === 'be_ready';
+  const isSk = apt.status === 'skipped';
+  const dim = ['completed', 'missed', 'cancelled'].includes(apt.status);
 
   const tokenCls = {
     in_progress: 'bg-teal-100 text-teal-800 ring-2 ring-teal-400',
-    be_ready:    'bg-amber-100 text-amber-800',
-    completed:   'bg-green-50 text-green-600',
-    skipped:     'bg-orange-100 text-orange-700',
-    missed:      'bg-red-50 text-red-400',
+    be_ready: 'bg-amber-100 text-amber-800',
+    completed: 'bg-green-50 text-green-600',
+    skipped: 'bg-orange-100 text-orange-700',
+    missed: 'bg-red-50 text-red-400',
   }[apt.status] ?? 'bg-slate-100 text-slate-600';
 
   return (
@@ -259,21 +259,21 @@ export default function DoctorDashboard() {
   const { socket } = useSocket();
   const router = useRouter();
 
-  const [data, setData]                   = useState(null);
-  const [pageLoading, setPageLoading]     = useState(true);
-  const [busy, setBusy]                   = useState('');
-  const [showWalkIn, setShowWalkIn]       = useState(false);
-  const [showSettings, setShowSettings]   = useState(false);
-  const [showMore, setShowMore]           = useState(false);
-  const [bookingOn, setBookingOn]         = useState(false);
-  const [tab, setTab]                     = useState('queue');
+  const [data, setData] = useState(null);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [busy, setBusy] = useState('');
+  const [showWalkIn, setShowWalkIn] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const [bookingOn, setBookingOn] = useState(false);
+  const [tab, setTab] = useState('queue');
 
   /* fetch */
   const refresh = useCallback(async () => {
     try {
       const res = await api.get('/doctors/me');
       setData(res.data.data);
-    } catch {}
+    } catch { }
   }, []);
 
   useEffect(() => {
@@ -331,8 +331,8 @@ export default function DoctorDashboard() {
   };
 
   const handleComplete = (tokenNumber) => act('next', {}, `c_${tokenNumber}`);
-  const handleSkip     = (tokenNumber) => act('skip', { tokenNumber }, `s_${tokenNumber}`);
-  const handleRecall   = (id)          => act('recall', { appointmentId: id }, `r_${id}`);
+  const handleSkip = (tokenNumber) => act('skip', { tokenNumber }, `s_${tokenNumber}`);
+  const handleRecall = (id) => act('recall', { appointmentId: id }, `r_${id}`);
 
   const handleEnd = async () => {
     if (!window.confirm('End clinic for today?\n\nAll remaining patients will be marked as missed.')) return;
@@ -352,29 +352,29 @@ export default function DoctorDashboard() {
   );
 
   const { doctor, queue, appointments = [] } = data;
-  const qStatus  = queue?.status || 'not_started';
-  const qActive  = qStatus === 'active';
-  const qPaused  = qStatus === 'paused';
-  const qEnded   = qStatus === 'ended';
+  const qStatus = queue?.status || 'not_started';
+  const qActive = qStatus === 'active';
+  const qPaused = qStatus === 'paused';
+  const qEnded = qStatus === 'ended';
   const qStarted = qActive || qPaused;
 
   const inProgress = appointments.find(a => a.status === 'in_progress');
-  const nextUp     = appointments.find(a => a.status === 'be_ready' && a._id !== inProgress?._id);
-  const total      = appointments.length;
-  const waiting    = appointments.filter(a => ['waiting','be_ready'].includes(a.status)).length;
-  const completed  = appointments.filter(a => a.status === 'completed').length;
-  const skipped    = appointments.filter(a => a.status === 'skipped').length;
-  const pct        = total > 0 ? Math.round((completed / total) * 100) : 0;
+  const nextUp = appointments.find(a => a.status === 'be_ready' && a._id !== inProgress?._id);
+  const total = appointments.length;
+  const waiting = appointments.filter(a => ['waiting', 'be_ready'].includes(a.status)).length;
+  const completed = appointments.filter(a => a.status === 'completed').length;
+  const skipped = appointments.filter(a => a.status === 'skipped').length;
+  const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
 
   const visibleApts = tab === 'queue'
-    ? appointments.filter(a => !['completed','missed','cancelled'].includes(a.status))
+    ? appointments.filter(a => !['completed', 'missed', 'cancelled'].includes(a.status))
     : appointments;
 
   /* Mobile "More" sheet items — secondary actions live here on mobile only */
   const moreItems = [
-    { icon: Plus,  label: 'Add Walk-in Patient', sub: 'Add manually to queue', onClick: () => setShowWalkIn(true) },
-    { icon: Bell,  label: 'Notify Next 2',       sub: 'Alert upcoming patients', onClick: () => toast.success('Notification sent to next 2 patients!') },
-    { icon: Settings, label: 'Queue Settings',   sub: `Avg ${doctor.avgTimePerPatient}m · Max ${doctor.maxPatientsPerDay} · ${doctor.consultationFee > 0 ? `₹${doctor.consultationFee}` : 'Free'}`, onClick: () => setShowSettings(true) },
+    { icon: Plus, label: 'Add Walk-in Patient', sub: 'Add manually to queue', onClick: () => setShowWalkIn(true) },
+    { icon: Bell, label: 'Notify Next 2', sub: 'Alert upcoming patients', onClick: () => toast.success('Notification sent to next 2 patients!') },
+    { icon: Settings, label: 'Queue Settings', sub: `Avg ${doctor.avgTimePerPatient}m · Max ${doctor.maxPatientsPerDay} · ${doctor.consultationFee > 0 ? `₹${doctor.consultationFee}` : 'Free'}`, onClick: () => setShowSettings(true) },
     { icon: bookingOn ? Square : Play, label: bookingOn ? 'Close Booking' : 'Open Booking', sub: bookingOn ? 'Stop accepting new patients' : 'Start accepting new patients', onClick: toggleBooking },
     ...(qStarted ? [{ icon: Square, label: 'End Clinic for Today', sub: 'Marks remaining as missed', onClick: handleEnd, danger: true }] : []),
   ];
@@ -404,7 +404,7 @@ export default function DoctorDashboard() {
               <div className="flex items-center gap-2">
                 <p className="text-sm font-bold text-slate-900 truncate leading-tight">Dr. {doctor.name}</p>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full capitalize shrink-0 ${Q_BADGE[qStatus]}`}>
-                  {qStatus.replace('_',' ')}
+                  {qStatus.replace('_', ' ')}
                 </span>
               </div>
               <p className="text-xs text-slate-400 truncate leading-tight hidden sm:block">{doctor.clinicName || 'Doctor Dashboard'}</p>
@@ -471,9 +471,9 @@ export default function DoctorDashboard() {
                   <p className={`text-5xl font-black leading-none mb-3 ${qEnded ? 'text-slate-300' : 'text-white/30'}`}>—</p>
                   <p className={`text-sm font-semibold ${qEnded ? 'text-slate-400' : 'text-teal-300'}`}>
                     {qStatus === 'not_started' && 'Start clinic to begin'}
-                    {qStatus === 'paused'      && 'Queue is paused'}
-                    {qStatus === 'ended'       && `${completed} patients seen today`}
-                    {qStatus === 'active'      && 'Queue is empty'}
+                    {qStatus === 'paused' && 'Queue is paused'}
+                    {qStatus === 'ended' && `${completed} patients seen today`}
+                    {qStatus === 'active' && 'Queue is empty'}
                   </p>
                 </div>
               )}
@@ -622,9 +622,9 @@ export default function DoctorDashboard() {
                   <p className={`text-4xl sm:text-5xl font-black leading-none ${qEnded ? 'text-slate-300' : 'text-white/30'}`}>—</p>
                   <p className={`text-sm font-semibold mt-2 ${qEnded ? 'text-slate-400' : 'text-teal-300'}`}>
                     {qStatus === 'not_started' && 'Start clinic to begin'}
-                    {qStatus === 'paused'      && 'Queue is paused'}
-                    {qStatus === 'ended'       && `${completed} patients seen today`}
-                    {qStatus === 'active'      && 'Queue is empty'}
+                    {qStatus === 'paused' && 'Queue is paused'}
+                    {qStatus === 'ended' && `${completed} patients seen today`}
+                    {qStatus === 'active' && 'Queue is empty'}
                   </p>
                 </div>
               )}
@@ -633,10 +633,10 @@ export default function DoctorDashboard() {
             {/* STATS ROW */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
               {[
-                { label: 'Total',     value: total,     icon: Users,        cls: 'text-slate-900', bg: 'bg-white border-slate-100' },
-                { label: 'Waiting',   value: waiting,   icon: Clock,        cls: 'text-amber-700', bg: 'bg-amber-50 border-amber-100' },
-                { label: 'Completed', value: completed, icon: CheckCircle2, cls: 'text-teal-700',  bg: 'bg-teal-50 border-teal-100'  },
-                { label: 'Skipped',   value: skipped,   icon: SkipForward,  cls: 'text-orange-700',bg: 'bg-orange-50 border-orange-100'},
+                { label: 'Total', value: total, icon: Users, cls: 'text-slate-900', bg: 'bg-white border-slate-100' },
+                { label: 'Waiting', value: waiting, icon: Clock, cls: 'text-amber-700', bg: 'bg-amber-50 border-amber-100' },
+                { label: 'Completed', value: completed, icon: CheckCircle2, cls: 'text-teal-700', bg: 'bg-teal-50 border-teal-100' },
+                { label: 'Skipped', value: skipped, icon: SkipForward, cls: 'text-orange-700', bg: 'bg-orange-50 border-orange-100' },
               ].map(({ label, value, icon: Icon, cls, bg }) => (
                 <div key={label} className={`${bg} rounded-2xl p-3 sm:p-4 border`}>
                   <div className="flex items-start justify-between mb-1.5">
@@ -671,7 +671,7 @@ export default function DoctorDashboard() {
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <div className="flex bg-slate-100 rounded-xl p-0.5 text-xs font-bold">
-                    {[['queue','Active'],['all','All']].map(([t,l]) => (
+                    {[['queue', 'Active'], ['all', 'All']].map(([t, l]) => (
                       <button key={t} onClick={() => setTab(t)}
                         className={`px-3 py-1.5 rounded-lg transition-colors ${tab === t ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500'}`}>
                         {l}
@@ -755,7 +755,15 @@ export default function DoctorDashboard() {
       {/* MODALS */}
       {showWalkIn && (
         <WalkInModal onClose={() => setShowWalkIn(false)} loading={busy === 'priority'}
-          onAdd={form => { act('priority', form, 'priority'); setShowWalkIn(false); }} />
+          //  onAdd={form => { act('priority', form, 'priority'); setShowWalkIn(false); }} />
+          onAdd={form => {
+            if (form.isPriority) {
+              act('priority', form, 'priority'); // ✅ keep old logic
+            } else {
+              act('walkin', form, 'walkin');     // ✅ new normal flow
+            }
+            setShowWalkIn(false);
+          }} />
       )}
       {showSettings && data?.doctor && (
         <SettingsModal doctor={data.doctor} onClose={() => setShowSettings(false)}

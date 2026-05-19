@@ -304,6 +304,48 @@ export const addPriorityPatient = async (req, res, next) => {
 };
 
 /* ─────────────────────────────────────────────
+   ADD WALK-IN 
+───────────────────────────────────────────── */
+
+export const addWalkInPatient = async (req, res, next) => {
+  try {
+    const { patientName, patientPhone, notes } = req.body;
+
+    // ✅ SAME AS PRIORITY (DO NOT CHANGE THIS PATTERN)
+    const doctor = await Doctor.findOne({ userId: req.user._id });
+    const today = getTodayDate();
+
+    let queue = await Queue.findOne({ doctorId: doctor._id, date: today });
+    if (!queue) queue = new Queue({ doctorId: doctor._id, date: today });
+
+    // ✅ SAME TOKEN LOGIC (IMPORTANT)
+    const tokenNumber = queue.lastTokenIssued + 1;
+    queue.lastTokenIssued = tokenNumber;
+
+    await queue.save();
+
+    const apt = await Appointment.create({
+      doctorId: doctor._id,
+      patientName,
+      patientPhone,
+      notes,
+      tokenNumber,
+      date: today,
+      status: 'waiting',   
+      isPriority: false,   
+    });
+
+    // ✅ keep real-time working
+    broadcast(req.io, doctor._id.toString(), 'queue_updated', { apt });
+
+    res.json({ success: true, data: apt });
+
+  } catch (err) {
+    next(err);
+  }
+};
+
+/* ─────────────────────────────────────────────
    END CLINIC
 ───────────────────────────────────────────── */
 export const endQueue = async (req, res, next) => {

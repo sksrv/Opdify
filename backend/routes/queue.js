@@ -1,5 +1,5 @@
 import express from 'express';
-import { startQueue, nextPatient, skipPatient, endQueue, getQueuePublic, togglePause, addPriorityPatient, recallPatient } from '../controllers/queueController.js';
+import { startQueue, nextPatient, skipPatient, endQueue, getQueuePublic, togglePause, addPriorityPatient, recallPatient, addWalkInPatient } from '../controllers/queueController.js';
 import { protect, authorize } from '../middleware/auth.js';
 const router = express.Router();
 router.post('/start', protect, authorize('doctor'), startQueue);
@@ -8,6 +8,7 @@ router.post('/skip', protect, authorize('doctor'), skipPatient);
 router.post('/recall', protect, authorize('doctor'), recallPatient);
 router.patch('/pause', protect, authorize('doctor'), togglePause);
 router.post('/priority', protect, authorize('doctor'), addPriorityPatient);
+router.post('/walkin', protect, authorize('doctor'), addWalkInPatient);
 router.post('/end', protect, authorize('doctor'), endQueue);
 router.get('/:doctorId', getQueuePublic);
 export default router;
