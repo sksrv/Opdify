@@ -344,8 +344,8 @@ export default function DoctorDashboard() {
   if (pageLoading || !data) return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="w-14 h-14 bg-teal-700 rounded-2xl flex items-center justify-center animate-pulse shadow-lg">
-          <span className="text-white font-black text-lg">CQ</span>
+        <div className="w-24 h-16 bg-teal-700 rounded-2xl flex items-center justify-center animate-pulse shadow-lg">
+          <span className="text-white font-black text-lg">Opdify</span>
         </div>
         <p className="text-sm text-slate-400 font-medium">Loading dashboard…</p>
       </div>
